@@ -48,5 +48,5 @@ def calculator():
             print("Error:", e)
 
 
-# Run the calculator
+# Run the calculator/Call the function
 calculator()
