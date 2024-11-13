@@ -1,30 +1,34 @@
-"""this exercise i did it in cs50p 
-"""
+# Cost of one Coke bottle
+cost = 50
 
+# Accepted coin denominations
+valid_coins = [25, 10, 5]
 
-def main():
-    coke_price = 50
-    amount_due = coke_price  # Set initial amount due for a Coke
-    accepted_coins = [25, 10, 5]  # List of accepted coin denominations
+# Initialize amount due
+amount_due = cost
 
-    while amount_due > 0:
-        coin = int(input("Please insert coin: "))
+while amount_due > 0:
+    # Prompt user for coin input
+    coin_input = input("Insert Coin: ")
 
-        # Check if the inserted coin is in accepted denominations
-        if coin in accepted_coins:
-            amount_due -= coin  # Deduct coin value from amount due
+    # Check if the input is a valid integer
+    if not coin_input.isdigit():
+        print("Invalid input. Please insert a valid coin (5, 10, or 25).")
+    else:
+        # Convert input to an integer
+        coin = int(coin_input)
 
-            # Only display the amount due if there is still an outstanding balance
-            if amount_due > 0:
-                print(f"Amount due: {amount_due} cents")
+        # Check if the inserted coin is valid
+        if coin in valid_coins:
+            # Deduct the coin value from the amount due
+            amount_due -= coin
         else:
-            print("Invalid coin. Please use 25, 10, or 5 cents only.")
+            print("Invalid coin. Please insert a valid coin (5, 10, or 25).")
 
-    # Calculate and display any change owed (if amount_due is negative)
-    change = abs(amount_due)  # Amount due might be negative if overpaid
-    if change > 0:
-        print(f"Your change is {change} cent(s)")
+    # Display the current amount due, even if the input was invalid
+    if amount_due > 0:
+        print(f"Amount Due: {amount_due}")
 
-
-if __name__ == "__main__":
-    main()
+# Calculate and output change owed if there's any overpayment
+change_owed = abs(amount_due)
+print(f"Change Owed: {change_owed}")
